@@ -1,0 +1,3 @@
+max příchodů do týmu = 3/s
+max přechdou pro jednoho hráč = 1/s
+max players team = 12

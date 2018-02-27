@@ -1,0 +1,15 @@
+{
+  "name": "Daniel_Storc/gybuliga",
+  "description": "gybuliga",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "author's name",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "smarty/smarty": "v3.1.31"
+  }
+}
