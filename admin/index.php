@@ -27,11 +27,7 @@ if (!isset($_SESSION['name'])) {
         $admin->showLogin("Vaše přihlášení vypršelo");
         die();
     }
-
     $admin->enterAdmin();
-
-    //$template->display("index.tpl");
-
 }
 
 
