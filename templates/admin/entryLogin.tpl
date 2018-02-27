@@ -7,7 +7,7 @@
 <link href="css/login.css" rel="stylesheet">
 <script rel="script" src="js/login.js"></script>
 <script rel="script" src="js/jquery-ui.js"></script>
-<form method="post" action="/gadmin/">
+<form method="post" action="http://gybuliga.dev/gadmin/">
     <div class="box">
         <input type="text" name="[login]username" class="email" placeholder="Přihlašovací jméno">
         <input type="password" name="[login]password" class="password" placeholder="Heslo">
