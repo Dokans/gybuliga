@@ -13,4 +13,10 @@ class articleController extends  BaseController
 
     }
 
+    public function setPageInfo()
+    {
+        // TODO: Implement setPageInfo() method.
+    }
+
+
 }

@@ -18,6 +18,12 @@ class statisticController extends BaseController
 
     }
 
+    public function setPageInfo()
+    {
+        $this->template->assign("page", array('title' => 'GyBuLiga'));
+    }
+
+
     public function displayTopStrikers()
     {
         $this->template->assign("strikers", $this->getTopStrikers());

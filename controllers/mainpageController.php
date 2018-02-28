@@ -15,6 +15,12 @@ class mainpageController extends BaseController
 
     }
 
+    public function setPageInfo()
+    {
+        $this->template->assign("page", array('title' => 'GyBuLiga'));
+    }
+
+
     public function showContent()
     {
 

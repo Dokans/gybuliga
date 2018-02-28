@@ -22,6 +22,12 @@ class teamsController extends BaseController
         }
     }
 
+    public function setPageInfo()
+    {
+        $this->template->assign("page", array('title' => 'Týmy | GyBuLiga'));
+    }
+
+
     public function showDetail()
     {
         $this->parseTeamFromUrl();

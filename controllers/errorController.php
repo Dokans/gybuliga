@@ -18,4 +18,11 @@ class errorController extends BaseController
     {
         $this->template->assign("template", "error.tpl");
     }
+
+    public function setPageInfo()
+    {
+        $this->template->assign("page", array('title' => 'Chyba | GyBuLiga'));
+    }
+
+
 }

@@ -24,4 +24,6 @@ abstract class BaseController
     }
 
     abstract public function getAction();
+
+    abstract public function setPageInfo();
 }

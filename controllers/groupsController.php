@@ -19,6 +19,12 @@ class groupsController extends BaseController
 
     }
 
+    public function setPageInfo()
+    {
+        $this->template->assign("page", array('title' => 'Skupiny | GyBuLiga'));
+    }
+
+
     public function selectGroup()
     {
         if (isset($this->subActions[0])) {
