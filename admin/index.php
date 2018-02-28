@@ -2,8 +2,6 @@
 session_start();
 require_once "config/inc.php";
 
-$_POST['login'] = array("username" => 'test', 'password' => 'test');
-
 $admin = new loginAdmin($database, $template);
 
 
