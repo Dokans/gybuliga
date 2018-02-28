@@ -2,8 +2,6 @@
 session_start();
 require_once "config/inc.php";
 
-$_POST['login'] = array("username" => 'test', 'password' => 'test');
-
 $admin = new loginAdmin($database, $template);
 
 
@@ -27,11 +25,7 @@ if (!isset($_SESSION['name'])) {
         $admin->showLogin("Vaše přihlášení vypršelo");
         die();
     }
-
     $admin->enterAdmin();
-
-    //$template->display("index.tpl");
-
 }
 
 
