@@ -8,12 +8,15 @@
  */
 class seasonAdmin extends baseAdmin
 {
+
     function display()
     {
-        // TODO: Implement display() method.
+        if (isset($this->subActions[0])) {
+
+        }
     }
 
-    public function editSeason()
+    public function editSeason($seasonID)
     {
         
     }
