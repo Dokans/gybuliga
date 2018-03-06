@@ -1,7 +1,8 @@
 {extends "@layout.tpl"}
 {block content}
-    <div class="card-header text-center">
-        <h1>Zápas: {$homeTeam.name} {$match->getHomeGoals()|default: "0"} vs {$match->getAwayGoals()} {$awayTeam.name}</h1>
+    <div class="card-header text-center" style="margin-bottom: 12px">
+        <h1>{$homeTeam.name} | {$match->getHomeGoals()|default: "0"} vs {$match->getAwayGoals()|default: "0"}
+            | {$awayTeam.name}</h1>
     </div>
     <div class="row">
         {if isset($success)}
@@ -14,7 +15,7 @@
             </div>
         {/if}
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 12px">
         <form method="post" action="/gadmin/matches/edit/{$matchID}">
             <div class="col-md-2"></div>
             <div class="col-md-2">Změnit výsledek</div>

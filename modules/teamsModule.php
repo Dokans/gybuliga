@@ -166,6 +166,64 @@ class teamsModule extends ObjectModule
 
     public function setActive($active)
     {
-        $this->database->query("UPDATE teams SET active = '$active' WHERE teamID = " . $this->id);
+        $this->active = $active;
+        $this->database->query("UPDATE teams SET active = ? WHERE teamID = ?", array($active, $this->id));
     }
+
+    public function getPlayDays()
+    {
+        $playDaysRaw = $this->database->queryOne("SELECT prefferdDays AS playDays FROM team_texts_info WHERE team = " . $this->id)['playDays'];
+        $playDays = explode(";", $playDaysRaw);
+        $ret = array();
+        foreach ($playDays as $playDay) {
+            if (!empty($playDay)) {
+                $ret[$playDay] = true;
+            }
+        }
+
+        return $ret;
+    }
+
+    public function isPlayDay($day)
+    {
+        $days = $this->getPlayDays();
+        if (isset($days[$day]) && $days[$day]) {
+            return true;
+        }
+        {
+            return false;
+        }
+    }
+
+    public function getTeamColour()
+    {
+        $colour = $this->database->queryOne("SELECT teamColour AS colour FROM team_texts_info WHERE team = " . $this->id)['colour'];
+        return $colour;
+    }
+
+    public function setPlayDays($playsDays)
+    {
+        $daysString = "";
+        foreach ($playsDays as $key => $playsDay) {
+            $daysString .= "$key;";
+        }
+        try {
+            $this->database->query("UPDATE gybuliga_dev.team_texts_info SET prefferdDays = ? WHERE team = ?", array($daysString, $this->id));
+            return true;
+        } catch (ErrorException $exception) {
+            return false;
+        }
+    }
+
+    public function setTeamColour($colour)
+    {
+        try {
+            $this->database->query("UPDATE gybuliga_dev.team_texts_info SET teamColour = ? WHERE team = ?", array($colour, $this->id));
+            return true;
+        } catch (ErrorException $exception) {
+            return false;
+        }
+    }
+
+
 }

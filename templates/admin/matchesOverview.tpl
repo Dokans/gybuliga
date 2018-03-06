@@ -25,8 +25,8 @@
             {/foreach}
         </ul>
         {foreach from=$rounds item="round"}
-            <div id="{$round.roundID}">
-                <table class="table-bordered">
+            <div id="{$round.roundID}" style="text-align: center">
+                <table class="table-responsive-md table-bordered">
                     <thead>
                     <tr>
                         <th>Domácí</th>
@@ -38,12 +38,12 @@
                     </thead>
                     <tbody>
                     {foreach from=$round.matches item="match"}
-                        <tr>
-                            <td>{$match->homeTeam->name}</td>
-                            <td>{$match->getHomeGoals()|default: "0"}</td>
+                        <tr {if $match->result == 0 or $match->result == 5} style="background-color: rgba(219,221,69,0.76)" {/if}>
+                            <td {if $match->getHomeGoals() > $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->homeTeam->name}</td>
+                            <td {if $match->getHomeGoals() > $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->getHomeGoals()|default: "0"}</td>
                             <td>-</td>
-                            <td>{$match->getAwayGoals()|default: "0"}</td>
-                            <td>{$match->awayTeam->name}</td>
+                            <td {if $match->getHomeGoals() < $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->getAwayGoals()|default: "0"}</td>
+                            <td {if $match->getHomeGoals() < $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->awayTeam->name}</td>
                             <td><a href="/gadmin/matches/edit/{$match->matchID}">Editovat</a></td>
                         </tr>
                     {/foreach}

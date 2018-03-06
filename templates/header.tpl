@@ -42,11 +42,10 @@
                         Top střelci
                     </a>
                 </li>
-                <li>
+                <li class="">
                     <a href="/archive">
-                        <span class="menu-icon fa fa-archive"></span>
-                        <span class="hidden-xs">Minulé sezóny</span>
-                        <span class="visible-xs">Archiv</span>
+                        <span class="menu-icon fa fa-archive hidden-xs hidden-sm"></span>
+                        <span class="hidden-xs hidden-sm">Minulé sezóny</span>
                     </a>
                 </li>
             </ul>

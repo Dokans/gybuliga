@@ -3,7 +3,7 @@
     {foreach from=$teams item="team"}
         <div class="row">
             <div class="col-md-2">
-                <img src="{$team->getTeamLogoPath()}" class="img-thumbnail" style="max-width: 50px">
+                <img src="{$team->getTeamLogoPath()}" class="img-thumbnail" style="max-width: 50px; min-height: 50px">
             </div>
             <div class="col-md-3">
                 <b>{$team->name}</b>
