@@ -92,6 +92,16 @@ class matchModule extends ObjectModule
         }
     }
 
+    public function deleteGoals($playerID)
+    {
+        try {
+            $this->database->query("DELETE FROM match_goals WHERE matchID = ? AND playerID = ?", array($this->matchID, $playerID));
+            return true;
+        } catch (Exception $€) {
+            return false;
+        }
+    }
+
     public function getHomeGoals()
     {
         $ret = $this->database->queryOne("SELECT sum(goals) AS x  FROM match_goals WHERE teamID = " . $this->homeTeam->id . " AND matchID = " . $this->matchID);
@@ -120,6 +130,30 @@ class matchModule extends ObjectModule
             $this->database->query("UPDATE gybuliga_dev.matches SET mvp_away = $playerID WHERE matchID = " . $this->matchID);
             return true;
         } catch (mysqli_sql_exception $exception) {
+            return false;
+        }
+    }
+
+    public function getHomeMVPName()
+    {
+        try {
+
+            $player = new playerModule($this->database, $this->template);
+            $player->load($this->HomeMVP);
+            return $player->name . " " . $player->surname;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getAwayMVPName()
+    {
+        try {
+
+            $player = new playerModule($this->database, $this->template);
+            $player->load($this->AwayMVP);
+            return $player->name . " " . $player->surname;
+        } catch (Exception $e) {
             return false;
         }
     }

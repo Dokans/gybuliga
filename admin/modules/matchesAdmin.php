@@ -78,6 +78,8 @@ class matchesAdmin extends baseAdmin
             $this->addStriker($_POST['playerID'], $_POST['matchID'], $_POST['teamID'], $_POST['goals']);
         }elseif (isset($_POST['mvpAway']) and isset($_POST['mvpHome'])){
             $this->setMvp($_POST['mvpHome'], $_POST['mvpAway'], $_POST['matchID']);
+        } elseif (isset($_POST['delete'])) {
+            $this->deleteStriker($_POST['playerID'], $this->subActions[1]);
         }
         $this->template->assign("matchID", $this->subActions[1]);
         $this->getMatchDetails($this->subActions[1]);
@@ -152,6 +154,18 @@ class matchesAdmin extends baseAdmin
         $match->load($matchID);
 
         if ($match->editGoals($playerID, $goals)) {
+            $this->template->assign("success", "Goly upraveny");
+        } else {
+            $this->template->assign("error", "Něco se nepovedlo");
+        }
+    }
+
+    public function deleteStriker($playerID, $matchID)
+    {
+        $match = new matchModule($this->database, $this->template);
+        $match->load($matchID);
+
+        if ($match->deleteGoals($playerID)) {
             $this->template->assign("success", "Goly upraveny");
         } else {
             $this->template->assign("error", "Něco se nepovedlo");
