@@ -8,6 +8,10 @@
  */
 class MainController implements urlParserModule
 {
+    /**
+     * @var Smarty $template
+     * @var Db $database
+     */
     public $template;
     public $database;
     private $url;
@@ -22,6 +26,7 @@ class MainController implements urlParserModule
         $this->database = $database;
         $this->request = $_REQUEST;
         $this->parseUrl();
+        $this->getHeader();
         $this->getController();
     }
 
@@ -58,8 +63,23 @@ class MainController implements urlParserModule
             $controler = new errorController($this->mainAction, $this->subActions, $this->template, $this->database, "Error 500");
             $controler->getAction();
         }
-
-
     }
 
+    public function getHeader()
+    {
+        $this->getGroups();
+        $this->getMatches();
+    }
+
+    public function getGroups()
+    {
+        $controller = new groupsController("", array(), $this->template, $this->database);
+        $this->template->assign("groups", $controller->getGroups($controller->getActiveMainSeason()['seasonID']));
+    }
+
+    public function getMatches()
+    {
+        $controller = new matchesController("", array(), $this->template, $this->database);
+        $this->template->assign("round", $controller->getRoundsInSeason($controller->getActiveMainSeason()['seasonID']));
+    }
 }

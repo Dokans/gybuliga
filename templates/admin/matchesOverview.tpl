@@ -25,8 +25,8 @@
             {/foreach}
         </ul>
         {foreach from=$rounds item="round"}
-            <div id="{$round.roundID}">
-                <table class="table-bordered">
+            <div id="{$round.roundID}" style="text-align: center">
+                <table class="table-responsive-md table-bordered">
                     <thead>
                     <tr>
                         <th>Domácí</th>

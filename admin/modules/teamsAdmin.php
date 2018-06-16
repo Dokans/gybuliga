@@ -47,8 +47,9 @@ class teamsAdmin extends BaseAdmin
             $team->setDescription($_POST['description']);
             $team->setName($_POST['name']);
             $team->setCapitan($_POST['capitan']);
-
-
+            $team->setPlayDays($_POST['playDays']);
+            $team->setTeamColour($_POST['colour']);
+            $team->setActive($_POST['active']);
         }
 
         $this->template->assign("team", $team);

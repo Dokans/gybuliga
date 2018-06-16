@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/css/header.css">
 {/block}
 {block scripts}
-    <script src="/js/header.js"></script>
+
 {/block}
 {block header}
     <div class="navbar-more-overlay"></div>
@@ -23,13 +23,36 @@
                         Domů
                     </a>
                 </li>
-                <li>
-                    <a href="/groups">
+                <li class="dropdown">
+                    <a class="dropdownBtn">
                         <span class="menu-icon fa fa-th-list"></span>
                         <span class="hidden-xs">Skupiny</span>
-                        <span class="visible-xs">Skupiny</span>
                     </a>
+                    <span class="visible-xs">Skupiny</span>
+                    <div id="dropDown" class="dropdown-content">
+                        {foreach from=$groups item="group"}
+                            <a href="/groups/{$group.url}">{$group.name}</a>
+                        {/foreach}
+                    </div>
                 </li>
+                {if count($rounds) > 1}
+                    <li class="dropdown">
+                        <a class="dropdownBtn">
+                            <span class="menu-icon fa fa-th-list"></span>
+                            <span class="hidden-xs">Zápasy</span>
+                    </a>
+                        <span class="visible-xs">Zápasy</span>
+                        <div id="dropDown" class="dropdown-content">
+                            {foreach from=$rounds item="round"}
+                                <a href="/matches/{$round.id}">{$round.number}. kolo</a>
+                            {/foreach}
+                        </div>
+                </li>
+                {else}
+                    <li>
+                    </li>
+                {/if}
+
                 <li>
                     <a href="/teams">
                         <span class="menu-icon fa fa-square-o"></span>
@@ -42,11 +65,10 @@
                         Top střelci
                     </a>
                 </li>
-                <li>
+                <li class="">
                     <a href="/archive">
-                        <span class="menu-icon fa fa-archive"></span>
-                        <span class="hidden-xs">Minulé sezóny</span>
-                        <span class="visible-xs">Archiv</span>
+                        <span class="menu-icon fa fa-archive hidden-xs hidden-sm"></span>
+                        <span class="hidden-xs hidden-sm">Minulé sezóny</span>
                     </a>
                 </li>
             </ul>

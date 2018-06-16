@@ -28,5 +28,6 @@
         {include "footer.tpl"}
     {/block}
 </div>
+<script src="/js/header.js"></script>
 </body>
 </html>

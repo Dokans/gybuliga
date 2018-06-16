@@ -1,7 +1,8 @@
 {extends "@layout.tpl"}
 {block content}
-    <div class="card-header text-center">
-        <h1>Zápas: {$homeTeam.name} {$match->getHomeGoals()|default: "0"} vs {$match->getAwayGoals()} {$awayTeam.name}</h1>
+    <div class="card-header text-center" style="margin-bottom: 12px">
+        <h1>{$homeTeam.name} | {$match->getHomeGoals()|default: "0"} vs {$match->getAwayGoals()|default: "0"}
+            | {$awayTeam.name}</h1>
     </div>
     <div class="row">
         {if isset($success)}
@@ -14,7 +15,7 @@
             </div>
         {/if}
     </div>
-    <div class="row">
+    <div class="row" style="margin-top: 12px">
         <form method="post" action="/gadmin/matches/edit/{$matchID}">
             <div class="col-md-2"></div>
             <div class="col-md-2">Změnit výsledek</div>
@@ -77,25 +78,38 @@
             <h2 class="text-center">Domácí - {$homeTeam.name}</h2>
             {foreach from=$homeTeam.strikers item="striker"}
                 <div class="row">
-                    <form action="/gadmin/matches/edit/{$matchID}" method="post">
-                        <div class="col-lg-4">
-                            <input type="hidden" name="goalID" value="{$striker.goalID}">
-                            <input type="hidden" name="playerID" value="{$striker.playerID}">
-                            <input type="hidden" name="matchID" value="{$striker.matchID}">
-                            {$striker.name} <b>{$striker.surname}</b>
-                        </div>
-                        <div class="col-lg-4">
-                            <input type="number" value="{$striker.goals}" name="goals" title="goals">
-                        </div>
-                        <div class="col-lg-2">
-                            <input type="submit" value="Změnit">
-                        </div>
-                        <div class="col-lg-2">
-                                <span class="icon-close">
-                                    Smazat
-                                </span>
-                        </div>
-                    </form>
+                    <div class="col-sm-10">
+                        <form action="/gadmin/matches/edit/{$matchID}" method="post">
+                            <div class="row">
+                                <div class="col-sm-5">
+
+                                    <input type="hidden" name="goalID" value="{$striker.goalID}">
+                                    <input type="hidden" name="playerID" value="{$striker.playerID}">
+                                    <input type="hidden" name="matchID" value="{$striker.matchID}">
+                                    {$striker.name} <b>{$striker.surname}</b>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input type="number" value="{$striker.goals}" name="goals" title="goals">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="submit" value="Změnit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <form method="post" action="/gadmin/matches/edit/{$matchID}">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="hidden" name="playerID" value="{$striker.playerID}">
+                                    <span class="icon-close">
+                                        <input type="submit" name="delete" class="icon-close"
+                                               value="Smazat">
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             {/foreach}
             <div class="row" style="padding-top: 10px; margin-top: 10px; border-top: solid black 0.5px">
@@ -139,9 +153,12 @@
                             <input type="submit" value="Změnit">
                         </div>
                         <div class="col-lg-2">
+                            <form method="post" action="/gadmin/matches/edit/{$matchID}">
+                                <input type="hidden" name="playerID" value="{$striker.playerID}">
                                 <span class="icon-close">
-                                    Smazat
+                                    <input type="submit" name="delete" class="icon-close" value="Smazat">
                                 </span>
+                            </form>
                         </div>
                     </form>
                 </div>

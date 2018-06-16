@@ -34,6 +34,9 @@
                         <div class="text-center" >{$match->date}</div>
                     </div>
                     <div class="row">
+                            <div class="text-center">{$match->date}</div>
+                        </div>
+                        <div class="row">
                         <div style="padding: 0 auto; margin: 40% 40%; min-height: 20%">
                             <h3>VS</h3>
                         </div>

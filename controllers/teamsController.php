@@ -77,6 +77,8 @@ class teamsController extends BaseController
         $this->template->assign("teamName", $team->name);
         $this->getRoster($team);
         $this->getTeamText($team);
+        $this->getPlayDays($team);
+        $this->getTeamColour($team);
         $this->template->assign("teamLogo", $team->getTeamLogoPath());
     }
 
@@ -98,5 +100,40 @@ class teamsController extends BaseController
         $this->template->assign("teamText", $team->getTeamDescription());
     }
 
+    public function getPlayDays(teamsModule $team)
+    {
+        $ret = array();
+        foreach ($team->getPlayDays() as $key => $playDay) {
+            switch ($key) {
+                case 1:
+                    $ret[] = "Po";
+                    break;
+                case 2:
+                    $ret[] = "Út";
+                    break;
+                case 3:
+                    $ret[] = "St";
+                    break;
+                case 4:
+                    $ret[] = "Čt";
+                    break;
+                case 5:
+                    $ret[] = "Pá";
+                    break;
+            }
+        }
+
+        $this->template->assign("playDays", $ret);
+    }
+
+    public function getTeamColour(teamsModule $team)
+    {
+        $this->template->assign("colour", $team->getTeamColour());
+    }
+
+    public function getLastMatches(teamsModule $team, $howMany)
+    {
+
+    }
 
 }
