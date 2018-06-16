@@ -32,11 +32,12 @@
                         <th>Domácí</th>
                         <th colspan="3"></th>
                         <th>Hosté</th>
+                        <th>Datum</th>
                         <th>Výsledek</th>
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-center">
                     {foreach from=$round.matches item="match"}
                         <tr {if $match->result == 0 or $match->result == 5} style="background-color: rgba(219,221,69,0.76)" {/if}>
                             <td {if $match->getHomeGoals() > $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->homeTeam->name}</td>
@@ -44,6 +45,10 @@
                             <td>-</td>
                             <td {if $match->getHomeGoals() < $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->getAwayGoals()|default: "0"}</td>
                             <td {if $match->getHomeGoals() < $match->getAwayGoals()}style="background-color: rgba(38,199,56,0.6)"{/if}>{$match->awayTeam->name}</td>
+<<<<<<< HEAD
+=======
+                            <td {if $match->date == null}style="background-color: rgba(239,255,0,0.6)"{/if}>{$match->date|default:"---"}</td>
+>>>>>>> master
                             <td><a href="/gadmin/matches/edit/{$match->matchID}">Editovat</a></td>
                         </tr>
                     {/foreach}
