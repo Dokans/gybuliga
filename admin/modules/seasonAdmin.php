@@ -20,7 +20,6 @@ class seasonAdmin extends baseAdmin
             $this->addSeason();
         } elseif ($this->subActions[0] == "add") {
             $this->addSeason();
->>>>>>> master
         }
     }
 
