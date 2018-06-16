@@ -20,7 +20,7 @@ if (!isset($_SESSION['name'])) {
     }
 } else {
     $timeSinceLastLogin = strtotime(date("H:i")) - strtotime($_SESSION['lastEntry']);
-    if ($timeSinceLastLogin >= 10000000) {
+    if ($timeSinceLastLogin >= 600000) {
         session_destroy();
         $admin->showLogin("Vaše přihlášení vypršelo");
         die();

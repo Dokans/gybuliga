@@ -70,6 +70,17 @@ class matchesAdmin extends baseAdmin
 
     public function displayEdit()
     {
+        $this->tryEdit();
+
+        $this->template->assign("matchID", $this->subActions[1]);
+        $this->getMatchDetails($this->subActions[1]);
+
+        $this->template->display("matchEdit.tpl");
+
+    }
+
+    public function tryEdit()
+    {
         if (isset($_POST['result'])) {
             $this->changeResult($_POST['matchID'], $_POST['result']);
         } elseif (isset($_POST['goalID']) and $_POST['playerID']) {
@@ -80,12 +91,12 @@ class matchesAdmin extends baseAdmin
             $this->setMvp($_POST['mvpHome'], $_POST['mvpAway'], $_POST['matchID']);
         } elseif (isset($_POST['delete'])) {
             $this->deleteStriker($_POST['playerID'], $this->subActions[1]);
+<<<<<<< HEAD
+=======
+        } elseif (isset($_POST['date'])){
+            $this->editDate($_POST['date'], $_POST['matchID']);
+>>>>>>> master
         }
-        $this->template->assign("matchID", $this->subActions[1]);
-        $this->getMatchDetails($this->subActions[1]);
-
-        $this->template->display("matchEdit.tpl");
-
     }
 
     /**
@@ -182,5 +193,14 @@ class matchesAdmin extends baseAdmin
             $this->template->assign("error", "Něco se nepovedlo");
         }
     }
-
+    public function editDate($date, $matchID)
+    {
+        $match = new matchModule($this->database, $this->template);
+        $match->load($matchID);
+        if ($match->setDate($date)){
+            $this->template->assign("success", "Datum upraveno");
+        } else {
+            $this->template->assign("error", "Něco se nepovedlo");
+        }
+    }
 }

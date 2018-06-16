@@ -157,4 +157,17 @@ class matchModule extends ObjectModule
             return false;
         }
     }
+<<<<<<< HEAD
+=======
+
+    public function setDate($date)
+    {
+        try {
+            $this->database->query("UPDATE gybuliga_dev.matches SET 'date' = $date WHERE matchID = " . $this->matchID);
+            return true;
+        } catch (mysqli_sql_exception $exception) {
+            return false;
+        }
+    }
+>>>>>>> master
 }
