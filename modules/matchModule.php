@@ -157,8 +157,7 @@ class matchModule extends ObjectModule
             return false;
         }
     }
-<<<<<<< HEAD
-=======
+
 
     public function setDate($date)
     {
@@ -169,5 +168,4 @@ class matchModule extends ObjectModule
             return false;
         }
     }
->>>>>>> master
 }
