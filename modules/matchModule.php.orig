@@ -158,6 +158,10 @@ class matchModule extends ObjectModule
         }
     }
 
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
     public function setDate($date)
     {
         try {

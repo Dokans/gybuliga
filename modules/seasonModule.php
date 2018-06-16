@@ -29,6 +29,11 @@ class seasonModule extends objectModule
         // TODO: Implement create() method.
     }
 
+    static function getSeasonTypes(Db $database)
+    {
+       return $database->queryAll("SELECT typeId, name FROM gybuliga_dev.seasontype");
+    }
+
 
 
 }

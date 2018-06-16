@@ -91,12 +91,9 @@ class matchesAdmin extends baseAdmin
             $this->setMvp($_POST['mvpHome'], $_POST['mvpAway'], $_POST['matchID']);
         } elseif (isset($_POST['delete'])) {
             $this->deleteStriker($_POST['playerID'], $this->subActions[1]);
+        } elseif (isset($_POST['date'])){
+            $this->editDate($_POST['date'], $_POST['matchID']);
         }
-        $this->template->assign("matchID", $this->subActions[1]);
-        $this->getMatchDetails($this->subActions[1]);
-
-        $this->template->display("matchEdit.tpl");
-
     }
 
     /**
